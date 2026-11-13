@@ -6,7 +6,7 @@ human-in-the-loop approval, checkpoints, events, and tool calling.
 
 - Package: `praxo_core_erlang` (`0.7.1`)
 - Registry: Hex
-- Install: `{deps, [{praxo_core_erlang, "0.5.0"}]}.`
+- Install: `{praxo_core, "0.7.1", {pkg, praxo_core_erlang}}`
 - Documentation: https://axisvela.github.io/praxo-core/languages/erlang/
 - Mirror repository: https://github.com/axisvela/praxo-core-erlang
 - Canonical source: https://github.com/axisvela/praxo-core/tree/main/language/erlang
