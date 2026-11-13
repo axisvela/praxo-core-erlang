@@ -4,7 +4,7 @@ Dedicated repository for the Erlang implementation of PRAXO-CORE: an
 embeddable, MIT-licensed agent execution kernel with policy controls,
 human-in-the-loop approval, checkpoints, events, and tool calling.
 
-- Package: `praxo_core_erlang` (`0.5.0`)
+- Package: `praxo_core_erlang` (`0.7.1`)
 - Registry: Hex
 - Install: `{deps, [{praxo_core_erlang, "0.5.0"}]}.`
 - Documentation: https://axisvela.github.io/praxo-core/languages/erlang/
