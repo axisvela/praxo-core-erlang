@@ -60,11 +60,13 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 | --- | --- |
 | [checkpoint](language/erlang/examples/checkpoint) | This example uses the Erlang Core checkpoint allowlist to encode and decode only registered payload types. |
 | [event-sink](language/erlang/examples/event-sink) | This example uses the Erlang Core sink composition to fan out lifecycle and tool events and filter the tool-only stream. |
+| [hitl](language/erlang/examples/hitl) | This example demonstrates a write tool that requires human approval: |
 | [identity-policy](language/erlang/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, inactive, role-mismatched, and tenant-mismatched actions. |
 | [mcp](language/erlang/examples/mcp) | This example uses a caller-owned in-process transport with the Erlang MCP client. It covers initialize, `tools/list`, and `tools/call` without a server process. |
 | [provider-fallback](language/erlang/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [retry](language/erlang/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
 | [service](language/erlang/examples/service) | This example defines a transport-neutral request handler boundary with health, principal, and run cases. Wire it into any Erlang HTTP server. |
+| [session-checkpoint](language/erlang/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns using the Core checkpoint allowlist. |
 | [streaming](language/erlang/examples/streaming) | This example collects agent stream parts from the Erlang Core and checks the `values` and `messages` lifecycle. |
 | [structured-output](language/erlang/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
 
