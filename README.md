@@ -1,6 +1,6 @@
 # PRAXO-CORE for Erlang
 
-PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.7.1`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
+PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.8.0`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
 
 ## At a glance
 
@@ -9,9 +9,9 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its n
 | Package | `praxo_core_erlang` |
 | Registry | [Hex](https://hex.pm/packages/praxo_core_erlang/0.7.1) |
 | Install | `{praxo_core, "0.7.1", {pkg, praxo_core_erlang}}` |
-| Source version | `0.7.1` |
+| Source version | `0.8.0` |
 | Published version | `0.7.1` |
-| Source tag | `erlang/v0.7.1` |
+| Source tag | `erlang/v0.8.0` |
 | Tier | Core |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/erlang/ |
@@ -59,9 +59,11 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 | Example | What it shows |
 | --- | --- |
 | [checkpoint](language/erlang/examples/checkpoint) | This example uses the Erlang Core checkpoint allowlist to encode and decode only registered payload types. |
+| [consumer](language/erlang/examples/consumer) | This example runs a deterministic model against the Erlang Core, registers one `record(target)` tool, applies an explicit tool scope plus policy, and checks that an allowed call... |
 | [event-sink](language/erlang/examples/event-sink) | This example uses the Erlang Core sink composition to fan out lifecycle and tool events and filter the tool-only stream. |
 | [hitl](language/erlang/examples/hitl) | This example demonstrates a write tool that requires human approval: |
 | [identity-policy](language/erlang/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, inactive, role-mismatched, and tenant-mismatched actions. |
+| [live-model](language/erlang/examples/live-model) | This example connects the Erlang Core to an OpenAI-compatible endpoint through `praxo_openai_compatible` and registers one low-risk `get_time(zone)` tool. The model may only cal... |
 | [mcp](language/erlang/examples/mcp) | This example uses a caller-owned in-process transport with the Erlang MCP client. It covers initialize, `tools/list`, and `tools/call` without a server process. |
 | [provider-fallback](language/erlang/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [retry](language/erlang/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
