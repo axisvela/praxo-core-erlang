@@ -67,6 +67,7 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 | [live-model](language/erlang/examples/live-model) | This example connects the Erlang Core to an OpenAI-compatible endpoint through `praxo_openai_compatible` and registers one low-risk `get_time(zone)` tool. The model may only cal... |
 | [mcp](language/erlang/examples/mcp) | This example uses a caller-owned in-process transport with the Erlang MCP client. It covers initialize, `tools/list`, and `tools/call` without a server process. |
 | [provider-fallback](language/erlang/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
+| [representative-chain](language/erlang/examples/representative-chain) | This deterministic example exercises the same application seams as the Go, Python, and TypeScript representative chains without a live provider: |
 | [retry](language/erlang/examples/retry) | This example retries a transient failure with a bounded attempt count and keeps the exhausted failure state. |
 | [service](language/erlang/examples/service) | This example defines a transport-neutral request handler boundary with health, principal, and run cases. Wire it into any Erlang HTTP server. |
 | [session-checkpoint](language/erlang/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns using the Core checkpoint allowlist. |
