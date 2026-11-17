@@ -58,6 +58,7 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 
 | Example | What it shows |
 | --- | --- |
+| [advanced-delegation](language/erlang/examples/advanced-delegation) | This is an application-level parent/child delegation example. It uses the existing `praxo_agent` tool scope, policy, middleware, and cancellation seams. It does not add or chang... |
 | [checkpoint](language/erlang/examples/checkpoint) | This example uses the Erlang Core checkpoint allowlist to encode and decode only registered payload types. |
 | [consumer](language/erlang/examples/consumer) | This example runs a deterministic model against the Erlang Core, registers one `record(target)` tool, applies an explicit tool scope plus policy, and checks that an allowed call... |
 | [event-sink](language/erlang/examples/event-sink) | This example uses the Erlang Core sink composition to fan out lifecycle and tool events and filter the tool-only stream. |
