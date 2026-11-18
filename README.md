@@ -1,6 +1,6 @@
 # PRAXO-CORE for Erlang
 
-PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.8.1`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
+PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.8.2`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
 
 ## At a glance
 
@@ -9,9 +9,9 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its n
 | Package | `praxo_core_erlang` |
 | Registry | [Hex](https://hex.pm/packages/praxo_core_erlang/0.8.1) |
 | Install | `{praxo_core, "0.8.1", {pkg, praxo_core_erlang}}` |
-| Source version | `0.8.1` |
+| Source version | `0.8.2` |
 | Published version | `0.8.1` |
-| Source tag | `erlang/v0.8.1` |
+| Source tag | `erlang/v0.8.2` |
 | Tier | Core |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/erlang/ |
