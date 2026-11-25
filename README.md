@@ -12,6 +12,9 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its n
 | Source version | `0.9.0` |
 | Published version | `0.9.0` |
 | Source tag | `erlang/v0.9.0` |
+| Tutorial tag | `erlang/tutorial/v0.1.0` |
+| Application tag | `erlang/application/v0.1.0` |
+| Examples tag | `erlang/examples/v0.1.0` |
 | Tier | Core |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/erlang/ |
@@ -73,6 +76,26 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 | [session-checkpoint](language/erlang/examples/session-checkpoint) | This example saves and restores a conversation history across two agent turns using the Core checkpoint allowlist. |
 | [streaming](language/erlang/examples/streaming) | This example collects agent stream parts from the Erlang Core and checks the `values` and `messages` lifecycle. |
 | [structured-output](language/erlang/examples/structured-output) | This example validates a final JSON answer against a schema and rejects invalid output. |
+
+## Scenario Tutorials
+
+Scenario-oriented tutorials live under `language/erlang/Tutorial`.
+
+| Path | What it shows |
+| --- | --- |
+| [Tutorial](language/erlang/Tutorial) | - [OTP Recovery (SE-06)](otp-recovery/README.md): real supervisor, injected child crash, observed restart and a review-only action; no production cluster. - [AIOps RCA (SE-06)](... |
+| [aiops-rca](language/erlang/Tutorial/aiops-rca) | A bounded first slice of [SE-06](https://axisvela.github.io/praxo-core/getting-started/agent-scenarios/), not a production incident platform. It correlates fixed trace/metric/lo... |
+| [otp-recovery](language/erlang/Tutorial/otp-recovery) | A bounded OTP supervision tutorial. It starts a real `one_for_one` supervisor and worker, injects one child crash, observes the restarted PID and start count, then lets Core cho... |
+| [policy-simulation](language/erlang/Tutorial/policy-simulation) | A bounded concurrent simulation: twelve Erlang processes compute household subsidies for base and alternate policies, yielding 1200 and 1800. Core drafts a review-only sensitivi... |
+| [soc-correlation](language/erlang/Tutorial/soc-correlation) | Fixed EDR and firewall events are correlated; one critical event selects an isolation-review branch, while clean input selects monitoring review. No host is blocked and no live... |
+
+## Reference Applications
+
+Complete AI-native reference applications live under `language/erlang/application`.
+
+| Path | What it shows |
+| --- | --- |
+| [application](language/erlang/application) | An OTP application where the agent drives the primary incident workflow: an operator submits an incident intent, the agent searches supervised telemetry, diagnoses the suspect,... |
 
 ## Verify
 
