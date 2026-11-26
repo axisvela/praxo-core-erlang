@@ -7,11 +7,12 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its n
 | Field | Value |
 | --- | --- |
 | Package | `praxo_core_erlang` |
-| Registry | [Hex](https://hex.pm/packages/praxo_core_erlang/0.9.0) |
-| Install | `{praxo_core, "0.9.0", {pkg, praxo_core_erlang}}` |
+| Registry | [Hex](https://hex.pm/packages/praxo_core_erlang/0.10.0) |
+| Install | `{praxo_core, "0.10.0", {pkg, praxo_core_erlang}}` |
 | Source version | `0.10.0` |
-| Published version | `0.9.0` |
-| Source tag | `erlang/v0.10.0` |
+| Published version | `0.10.0` |
+| Publication status | published |
+| Canonical source tag | [`erlang/v0.10.0`](https://github.com/axisvela/praxo-core/tree/erlang/v0.10.0) |
 | Tier | Core |
 | Contract | `SPEC_VERSION` `0.2.0` |
 | Documentation | https://axisvela.github.io/praxo-core/languages/erlang/ |
@@ -26,7 +27,7 @@ PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its n
 Install the published package:
 
 ```erlang
-{praxo_core, "0.9.0", {pkg, praxo_core_erlang}}
+{praxo_core, "0.10.0", {pkg, praxo_core_erlang}}
 ```
 
 ```erlang
@@ -80,15 +81,15 @@ Scenario-oriented tutorials live under `language/erlang/Tutorial`. Planning cont
 
 | Path | What it shows |
 | --- | --- |
-| [Tutorial](language/erlang/Tutorial) | - [OTP Recovery (SE-06)](otp-recovery/README.md): real supervisor, injected child crash, observed restart and a review-only action; no production cluster. - [AIOps RCA (SE-06)](... |
-| [aiops-rca](language/erlang/Tutorial/aiops-rca) | A bounded first slice of [SE-06](https://axisvela.github.io/praxo-core/getting-started/agent-scenarios/), not a production incident platform. It correlates fixed trace/metric/lo... |
+| [Tutorial](language/erlang/Tutorial) | - [OTP Recovery (SE-06)](https://github.com/axisvela/praxo-core/blob/main/language/erlang/Tutorial/otp-recovery/README.md): real supervisor, injected child crash, observed restart and a review-only action; no production cluster. - [AIOps RCA (SE-06)](https://github.com/axisvela/praxo-core/blob/main/language/erlang/Tutorial/aiops-rca/README.md): source Erlang Core, fixed correlated signals and a review-only rollback draft; no remediation or live telemetry. |
+| [aiops-rca](language/erlang/Tutorial/aiops-rca) | A bounded first slice of [SE-06](https://axisvela.github.io/praxo-core/getting-started/agent-scenarios/), not a production incident platform. It correlates fixed trace/metric/log signals and drafts a review-only rollback. This uses the source Erlang Core through `escript`; no network, credentials or packages beyond Erlang/OTP are required. |
 | [otp-recovery](language/erlang/Tutorial/otp-recovery) | A bounded OTP supervision tutorial. It starts a real `one_for_one` supervisor and worker, injects one child crash, observes the restarted PID and start count, then lets Core cho... |
 | [policy-simulation](language/erlang/Tutorial/policy-simulation) | A bounded concurrent simulation: twelve Erlang processes compute household subsidies for base and alternate policies, yielding 1200 and 1800. Core drafts a review-only sensitivi... |
 | [soc-correlation](language/erlang/Tutorial/soc-correlation) | Fixed EDR and firewall events are correlated; one critical event selects an isolation-review branch, while clean input selects monitoring review. No host is blocked and no live... |
 
 ## Reference Applications
 
-Complete AI-native reference applications live under `language/erlang/application`.
+Reference application sources live under `language/erlang/application`. See each README for implementation scope and validation status.
 
 | Path | What it shows |
 | --- | --- |
@@ -132,7 +133,7 @@ This mirror contains the language source and the shared `spec/` vectors, so the 
 - Mirror repository: https://github.com/axisvela/praxo-core-erlang
 - Release index: https://axisvela.github.io/praxo-core/languages/registry-status/
 
-This repository is a discovery mirror of the canonical Erlang source. The monorepo remains the source of truth and the release workflow source.
+This repository is a discovery mirror of the canonical Erlang source. The monorepo remains the source of truth and the release workflow source. The mirror's `main` branch tracks current source, not a release snapshot. Source tags refer to the canonical monorepo and are not necessarily present in this mirror; syncing the branch does not publish mirror tags or registry packages.
 
 PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
