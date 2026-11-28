@@ -1,6 +1,6 @@
 # PRAXO-CORE for Erlang
 
-PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.10.1`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
+PRAXO-CORE (also written praxocore) is an embeddable, MIT-licensed agent framework. PRAXO-CORE is an embeddable, MIT-licensed agent framework. This package is its native Erlang Core with source tag `erlang/v0.10.1`. It passes all eleven shared vector groups on Erlang/OTP 29 and includes the native agent loop, memory store, checkpoint allowlist, lexical path policy, context compaction, event sinks, middleware helpers, tool selection, and human-in-the-loop interrupt decisions. It does not call Go or another Core.
 
 ## At a glance
 
@@ -59,13 +59,13 @@ Runnable examples live under [`language/erlang/examples`](language/erlang/exampl
 
 | Example | What it shows |
 | --- | --- |
-| [advanced-delegation](language/erlang/examples/advanced-delegation) | This is an application-level parent/child delegation example. It uses the existing `praxo_agent` tool scope, policy, middleware, and cancellation seams. It does not add or chang... |
+| [advanced-delegation](language/erlang/examples/advanced-delegation) | This is an application-level parent/child delegation example. It uses the existing `praxo_agent` tool scope, policy, middleware, and cancellation seams. It does not add or change Core API. |
 | [checkpoint](language/erlang/examples/checkpoint) | This example uses the Erlang Core checkpoint allowlist to encode and decode only registered payload types. |
-| [consumer](language/erlang/examples/consumer) | This example runs a deterministic model against the Erlang Core, registers one `record(target)` tool, applies an explicit tool scope plus policy, and checks that an allowed call... |
+| [consumer](language/erlang/examples/consumer) | This example runs a deterministic model against the Erlang Core, registers one `record(target)` tool, applies an explicit tool scope plus policy, and checks that an allowed call produces one effect while a denied call produces none. |
 | [event-sink](language/erlang/examples/event-sink) | This example uses the Erlang Core sink composition to fan out lifecycle and tool events and filter the tool-only stream. |
 | [hitl](language/erlang/examples/hitl) | This example demonstrates a write tool that requires human approval: |
 | [identity-policy](language/erlang/examples/identity-policy) | This example binds a trusted principal to policy decisions and rejects missing, inactive, role-mismatched, and tenant-mismatched actions. |
-| [live-model](language/erlang/examples/live-model) | This example connects the Erlang Core to an OpenAI-compatible endpoint through `praxo_openai_compatible` and registers one low-risk `get_time(zone)` tool. The model may only cal... |
+| [live-model](language/erlang/examples/live-model) | This example connects the Erlang Core to an OpenAI-compatible endpoint through `praxo_openai_compatible` and registers one low-risk `get_time(zone)` tool. The model may only call `get_time`; every other tool call is denied by policy. |
 | [mcp](language/erlang/examples/mcp) | This example uses a caller-owned in-process transport with the Erlang MCP client. It covers initialize, `tools/list`, and `tools/call` without a server process. |
 | [provider-fallback](language/erlang/examples/provider-fallback) | This example calls a fallback only after the primary fails and preserves the primary failure when both fail. |
 | [representative-chain](language/erlang/examples/representative-chain) | This deterministic example exercises the same application seams as the Go, Python, and TypeScript representative chains without a live provider: |
@@ -83,9 +83,9 @@ Scenario-oriented tutorials live under `language/erlang/Tutorial`. Planning cont
 | --- | --- |
 | [Tutorial](language/erlang/Tutorial) | - [OTP Recovery (SE-06)](https://github.com/axisvela/praxo-core/blob/main/language/erlang/Tutorial/otp-recovery/README.md): real supervisor, injected child crash, observed restart and a review-only action; no production cluster. - [AIOps RCA (SE-06)](https://github.com/axisvela/praxo-core/blob/main/language/erlang/Tutorial/aiops-rca/README.md): source Erlang Core, fixed correlated signals and a review-only rollback draft; no remediation or live telemetry. |
 | [aiops-rca](language/erlang/Tutorial/aiops-rca) | A bounded first slice of [SE-06](https://axisvela.github.io/praxo-core/getting-started/agent-scenarios/), not a production incident platform. It correlates fixed trace/metric/log signals and drafts a review-only rollback. This uses the source Erlang Core through `escript`; no network, credentials or packages beyond Erlang/OTP are required. |
-| [otp-recovery](language/erlang/Tutorial/otp-recovery) | A bounded OTP supervision tutorial. It starts a real `one_for_one` supervisor and worker, injects one child crash, observes the restarted PID and start count, then lets Core cho... |
-| [policy-simulation](language/erlang/Tutorial/policy-simulation) | A bounded concurrent simulation: twelve Erlang processes compute household subsidies for base and alternate policies, yielding 1200 and 1800. Core drafts a review-only sensitivi... |
-| [soc-correlation](language/erlang/Tutorial/soc-correlation) | Fixed EDR and firewall events are correlated; one critical event selects an isolation-review branch, while clean input selects monitoring review. No host is blocked and no live... |
+| [otp-recovery](language/erlang/Tutorial/otp-recovery) | A bounded OTP supervision tutorial. It starts a real `one_for_one` supervisor and worker, injects one child crash, observes the restarted PID and start count, then lets Core choose a review action from that evidence. No production cluster is touched. |
+| [policy-simulation](language/erlang/Tutorial/policy-simulation) | A bounded concurrent simulation: twelve Erlang processes compute household subsidies for base and alternate policies, yielding 1200 and 1800. Core drafts a review-only sensitivity report with no policy prediction. |
+| [soc-correlation](language/erlang/Tutorial/soc-correlation) | Fixed EDR and firewall events are correlated; one critical event selects an isolation-review branch, while clean input selects monitoring review. No host is blocked and no live SIEM is queried. |
 
 ## Reference Applications
 
@@ -93,7 +93,7 @@ Reference application sources live under `language/erlang/application`. See each
 
 | Path | What it shows |
 | --- | --- |
-| [application](language/erlang/application) | An OTP application where the agent drives the primary incident workflow: an operator submits an incident intent, the agent searches supervised telemetry, diagnoses the suspect,... |
+| [application](language/erlang/application) | An OTP application where the agent drives the primary incident workflow: an operator submits an incident intent, the agent searches supervised telemetry, diagnoses the suspect, and drafts a review-only remediation. The agent never executes remediation. |
 
 ## Verify
 
@@ -105,6 +105,11 @@ python language/erlang/api-snapshot.py --check
 ```
 
 This mirror contains the language source and the shared `spec/` vectors, so the implementation can be built and tested here. See [`language/erlang/README.md`](language/erlang/README.md) for the exact commands. The monorepo CI runs conformance, API snapshot, and native tests for this implementation.
+
+## Boundaries
+
+Reference application source is not end-to-end portfolio acceptance; follow each README's scope and evidence.
+PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
 ## Community
 
@@ -135,6 +140,5 @@ This mirror contains the language source and the shared `spec/` vectors, so the 
 
 This repository is a discovery mirror of the canonical Erlang source. The monorepo remains the source of truth and the release workflow source. The mirror's `main` branch tracks current source, not a release snapshot. Source tags refer to the canonical monorepo and are not necessarily present in this mirror; syncing the branch does not publish mirror tags or registry packages.
 
-PRAXO-CORE is not a hosted model, workflow engine, identity provider, or safety controller. Do not infer exactly-once execution, complete sandbox isolation, production security certification, live-provider behavior, or physical safety from this package.
 
 MIT licensed.
